@@ -76,12 +76,9 @@ public class DeviceListAdapter extends BaseAdapter {
         holder.nameTv.setText(device.getName());
         holder.addressTv.setText(device.getAddress());
         holder.pairBtn.setText((device.getBondState() == BluetoothDevice.BOND_BONDED) ? "Sil" : "Eşletir");
-        holder.pairBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mListener != null) {
-                    mListener.onPairButtonClick(position);
-                }
+        holder.pairBtn.setOnClickListener(v -> {
+            if (mListener != null) {
+                mListener.onPairButtonClick(position);
             }
         });
 
