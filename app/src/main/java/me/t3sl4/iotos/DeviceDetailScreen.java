@@ -12,7 +12,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -23,6 +22,8 @@ import java.util.UUID;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import me.t3sl4.iotos.Util.Connection.ConnectThread;
+import me.t3sl4.iotos.Util.Connection.ConnectedThread;
 
 public class DeviceDetailScreen extends AppCompatActivity {
 

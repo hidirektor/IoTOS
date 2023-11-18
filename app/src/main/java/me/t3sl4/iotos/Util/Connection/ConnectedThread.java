@@ -1,4 +1,4 @@
-package me.t3sl4.iotos;
+package me.t3sl4.iotos.Util.Connection;
 
 
 import android.bluetooth.BluetoothSocket;

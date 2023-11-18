@@ -1,4 +1,4 @@
-package me.t3sl4.iotos.adapter;
+package me.t3sl4.iotos.Util.Adapter;
 
 import android.os.Parcel;
 import android.os.Parcelable;

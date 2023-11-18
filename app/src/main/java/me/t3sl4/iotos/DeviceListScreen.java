@@ -2,7 +2,6 @@ package me.t3sl4.iotos;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -10,14 +9,9 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.PopupMenu;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
@@ -31,8 +25,8 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Set;
 
-import me.t3sl4.iotos.adapter.Device;
-import me.t3sl4.iotos.adapter.DeviceAdapter;
+import me.t3sl4.iotos.Util.Adapter.Device;
+import me.t3sl4.iotos.Util.Adapter.DeviceAdapter;
 
 public class DeviceListScreen extends AppCompatActivity {
     public static final int REQUEST_BLUETOOTH_PERMISSION = 1;
