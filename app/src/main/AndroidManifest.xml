@@ -31,7 +31,6 @@
         </activity>
         <activity android:name=".DeviceListScreen"/>
         <activity android:name=".DeviceDetailScreen"/>
-        <activity android:name=".DeviceListActivity"/>
 
     </application>
 
