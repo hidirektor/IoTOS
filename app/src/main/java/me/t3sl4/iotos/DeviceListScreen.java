@@ -31,7 +31,7 @@ import me.t3sl4.iotos.Util.Adapter.DeviceAdapter;
 public class DeviceListScreen extends AppCompatActivity {
     public static final int REQUEST_BLUETOOTH_PERMISSION = 1;
     public static String EXTRA_INFO = "device_address";
-    private BluetoothAdapter myBluetooth;
+    public static BluetoothAdapter myBluetooth;
     private Set<BluetoothDevice> pairedDevices;
 
 
@@ -46,6 +46,8 @@ public class DeviceListScreen extends AppCompatActivity {
         super.onCreate(bundle);
         setContentView(R.layout.activity_device_list_screen);
 
+        myBluetooth = BluetoothAdapter.getDefaultAdapter();
+
         requestBluetoothPermissions();
 
         if (readFromFileAndUpdateSensorNames().length < 2) {
@@ -53,7 +55,6 @@ public class DeviceListScreen extends AppCompatActivity {
         }
 
         deviceList = findViewById(R.id.listView);
-        myBluetooth = BluetoothAdapter.getDefaultAdapter();
         toolbar = findViewById(R.id.toolbar_dev_list);
 
         try {
@@ -64,21 +65,18 @@ public class DeviceListScreen extends AppCompatActivity {
         }
 
         if (myBluetooth == null) {
-            Toast.makeText(getApplicationContext(), "Aktif cihaz bulunamadı !", Toast.LENGTH_LONG).show();
+            showToast("Bluetooth is not supported on this device");
+            finish(); // or handle the lack of Bluetooth support appropriately
             return;
         } else if (!myBluetooth.isEnabled()) {
-            startActivityForResult(new Intent("android.bluetooth.adapter.action.REQUEST_ENABLE"), 1);
-        }
-
-        if (!myBluetooth.isEnabled()) {
-            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
                 return;
             }
-            startActivityForResult(enableBtIntent, REQUEST_BLUETOOTH_PERMISSION);
-        } else {
-            pairedDevicesList();
+            startActivityForResult(new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE), 1);
+            return;
         }
+
+        pairedDevicesList();
 
         deviceList.setOnItemClickListener((adapterView, view, position, id) -> {
             Device selectedDevice = (Device) deviceListAdapter.getItem(position);
@@ -95,6 +93,10 @@ public class DeviceListScreen extends AppCompatActivity {
             return;
         }
         pairedDevices = myBluetooth.getBondedDevices();
+        if (pairedDevices == null) {
+            Toast.makeText(getApplicationContext(), "Eşleştirilen cihaz yok.", Toast.LENGTH_LONG).show();
+            return;
+        }
         ArrayList<Device> deviceListMap = new ArrayList<>();
         if (pairedDevices.size() > 0) {
             for (BluetoothDevice device : pairedDevices) {
@@ -103,8 +105,14 @@ public class DeviceListScreen extends AppCompatActivity {
         } else {
             Toast.makeText(getApplicationContext(), "Eşleştirilen cihaz yok.", Toast.LENGTH_LONG).show();
         }
-        deviceListAdapter = new DeviceAdapter(getApplicationContext(), deviceListMap);
-        deviceList.setAdapter(deviceListAdapter);
+        if (deviceListMap != null) {
+            deviceListAdapter = new DeviceAdapter(getApplicationContext(), deviceListMap);
+            if (deviceList != null) { // Null check added here
+                deviceList.setAdapter(deviceListAdapter);
+            } else {
+                Log.e("DeviceListScreen", "deviceList is null.");
+            }
+        }
     }
 
     private void requestBluetoothPermissions() {
@@ -181,5 +189,9 @@ public class DeviceListScreen extends AppCompatActivity {
         } catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
         }
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 }
