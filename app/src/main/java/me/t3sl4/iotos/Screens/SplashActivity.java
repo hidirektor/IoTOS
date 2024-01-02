@@ -1,14 +1,15 @@
-package me.t3sl4.iotos;
+package me.t3sl4.iotos.Screens;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+import me.t3sl4.iotos.R;
+import me.t3sl4.iotos.Screens.Device.DeviceListScreen;
+
+public class SplashActivity extends AppCompatActivity {
 
     private static final int SPLASH_DELAY = 3000;
 
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void redirectToMainActivity() {
         new Handler().postDelayed(() -> {
-            Intent intent = new Intent(MainActivity.this, DeviceListScreen.class);
+            Intent intent = new Intent(SplashActivity.this, DeviceListScreen.class);
             startActivity(intent);
             finish();
         }, SPLASH_DELAY);

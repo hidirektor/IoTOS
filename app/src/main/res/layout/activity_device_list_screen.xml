@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="10dp"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:background="@color/primary">
 
     <include
         android:id="@+id/toolbar_dev_list"
@@ -22,12 +23,13 @@
         android:fastScrollEnabled="true"/>
 
     <TextView
-        android:textColor="#bbbbbb"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="55dp"
         android:text="Eşleştirilen bluetooth cihazlardan birini seç."
+        android:textStyle="bold"
+        android:textColor="@color/white"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"/>
 

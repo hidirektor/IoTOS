@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/primary"
     android:fitsSystemWindows="true">
 
     <ScrollView
@@ -17,7 +17,7 @@
             android:layout_height="125dp"
             android:layout_gravity="center"
             android:elevation="3dp"
-            android:src="@drawable/bluetooth" />
+            android:src="@drawable/splash_ikon" />
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

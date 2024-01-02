@@ -1,2 +1,2 @@
-# IoTOS
-Just test normal bluetooth and BLE
+# SmartGadget
+Read data from Bluetooth & Bluetooth Low Energy devices.

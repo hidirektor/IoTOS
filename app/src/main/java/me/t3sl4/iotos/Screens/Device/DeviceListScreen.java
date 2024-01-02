@@ -1,4 +1,4 @@
-package me.t3sl4.iotos;
+package me.t3sl4.iotos.Screens.Device;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -25,6 +25,7 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Set;
 
+import me.t3sl4.iotos.R;
 import me.t3sl4.iotos.Util.Adapter.Device;
 import me.t3sl4.iotos.Util.Adapter.DeviceAdapter;
 

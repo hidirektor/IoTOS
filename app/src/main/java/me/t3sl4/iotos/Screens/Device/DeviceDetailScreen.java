@@ -1,4 +1,4 @@
-package me.t3sl4.iotos;
+package me.t3sl4.iotos.Screens.Device;
 
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
@@ -22,6 +22,7 @@ import java.util.UUID;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import me.t3sl4.iotos.R;
 import me.t3sl4.iotos.Util.Connection.ConnectThread;
 import me.t3sl4.iotos.Util.Connection.ConnectedThread;
 
